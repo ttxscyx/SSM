@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+             <!--成员变量-->                      <!--接口对应的实现类的对象-->
+    <bean id="userController" class="com.cyx.spring.controller.UserController" autowire="byType">
+
+    </bean>
+             <!--成员变量-->             <!--接口对应的实现类的对象-->
+    <bean id="userService" class="com.cyx.spring.service.impl.UserServiceImpl" autowire="byType">
+
+    </bean>
+
+    <bean id="userDao" class="com.cyx.spring.dao.impl.UserDaoImpl">
+
+    </bean>
+    <!--<bean id="userController" class="com.cyx.spring.controller.UserController" autowire="byName">
+        <property name="userService" ref="userService"></property>
+    </bean>
+    <bean id="userService" class="UserServiceImpl" autowire="byName">
+        <property name="userDao" ref="userDao"></property>
+    </bean>
+    <bean id="service" class="UserServiceImpl" autowire="byName">
+        <property name="userDao" ref="userDao"></property>
+    </bean>
+
+    <bean id="userDao" class="com.cyx.spring.dao.impl.UserDaoImpl">
+
+    </bean>
+    <bean id="userDaoImpl" class="com.cyx.spring.dao.impl.UserDaoImpl">
+    </bean>-->
+</beans>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cyx.ssm.mapper.EmployeeMapper">
+
+    <!--List<Employee> getAllEmployee();-->
+    <select id="getAllEmployee" resultType="Employee">
+        select * from t_emp
+    </select>
+    <!--void deleteEmployee(Integer empId);-->
+    <delete id="deleteEmployee">
+        delete from t_emp
+        where emp_id = #{empId,jdbcType=INTEGER}
+    </delete>
+    <!--Employee get(Integer empId);-->
+    <select id="get" resultType="Employee">
+        select * from t_emp where emp_id = #{empId}
+    </select>
+    <!--void save(Employee employee);-->
+    <update id="save" parameterType="com.cyx.ssm.pojo.Employee">
+        update t_emp
+        <set >
+            <if test="empName != null" >
+                emp_name = #{empName,jdbcType=VARCHAR},
+            </if>
+            <if test="age != null" >
+                age = #{age,jdbcType=INTEGER},
+            </if>
+            <if test="gender != null" >
+                gender = #{gender,jdbcType=CHAR},
+            </if>
+            <if test="email != null" >
+                email = #{email,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where emp_id = #{empId,jdbcType=INTEGER}
+    </update>
+    <!--void addemployee(Employee employee);-->
+    <insert id="addemployee">
+        insert into t_emp values(#{empId},#{empName},#{age},#{gender},#{email})
+    </insert>
+</mapper>
